@@ -73,6 +73,7 @@ CREATE TABLE IF NOT EXISTS `Transporte` (
     REFERENCES `Historico` (`idHistorico`));
 
 
+
 INSERT INTO Usuario (id, nome, idade) VALUES (1, 'Jorge',26);
 INSERT INTO Historico (idHistorico, idUsuario, pontuacaoGeral) VALUES (1,1,0);
 INSERT INTO Reciclagem (idHistorico, fazReciclagem, separaLixoOrganicoNaoOrganico, separaLixoPorTipo, valorIndice) VALUES (1,0,0,0,0);
