@@ -89,7 +89,7 @@ def p16(resposta):  #16. A casa usa energia renovável?
     elif resposta == "02": #não
         return 0.13
     elif resposta == "03": #Não sei
-        return 0;13
+        return 0.13
 
 
 def p17(resposta):  #17. Consome produtos de uma empresa EcoFriendly ? 
