@@ -1,7 +1,8 @@
+from re import X
 from contas import *
 from contextlib import redirect_stderr
 from flask import Flask, render_template, redirect, request
-
+from datetime import date
 
 dic_resp2 = {}
 
@@ -18,8 +19,9 @@ def home():
 @app.route('/formulario', methods = ['GET' , 'POST'])
 def formulario():  #criar a f com o mesmo nome da rota ajuda
     nome = request.form.get('nome')
+    data_nasc = request.form.get('data_nasc')
     data = request.form.get('data')
-
+    idade = idade(datetime.strptime(data_nasc, '%Y-%m-%d').date())
 
     for i in range (1,17):
         if i <= 9:
