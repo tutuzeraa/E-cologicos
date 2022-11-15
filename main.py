@@ -1,59 +1,66 @@
-import mysql.connector
-from flask import Flask, make_response, jsonify, request
-# from datetime import datetime
+from contextlib import redirect_stderr
+from flask import Flask, render_template, redirect, request
+import calculo
+
+lista_resp = [] 
+dic_resp2 = {}
+def Teste(x, y, z):
+    print("RESULTADO DA MINHA FUNÇÂO TESTE: ",x+y+z)
 
 
-mydb = mysql.connector.connect( 
-    host='localhost',
-    user='root',
-    password='',
-    database='e-cologicos'
-)
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'TESTE'  #n lembro o que era
 
-app = Flask('e-cologicos')
-app.config['JSON_SORT_KEYS'] = False
+
+@app.route('/')  #quando entra sem rota 
+def home():
+    return render_template('formulario.html') #pagina inicial
+
+
+@app.route('/formulario', methods = ['GET' , 'POST'])
+def formulario():  #criar a f com o mesmo nome da rota ajuda
+    nome = request.form.get('nome')
+    data = request.form.get('data')
+
+    resp01 = request.form.get('p01')
+    resp02 = request.form.get('p02')
+    resp03 = request.form.get('p03')
+    resp04 = request.form.get('p04')
+    resp05 = request.form.get('p05') ## 00=nenhum, 07 nao sei
+    resp06 = request.form.get('p06')
+    resp07 = request.form.get('p07')
+    resp08 = request.form.get('p08')
+    resp09 = request.form.get('p09')
+    resp10 = request.form.get('p10')
+    resp11 = request.form.get('p11')
+    resp12 = request.form.get('p12')
+    resp13 = request.form.get('p13')
+    resp14 = request.form.get('p14')
+    resp15 = request.form.get('p15')
+    resp16 = request.form.get('p16')
+    resp17 = request.form.get('p17')
+
+    for i in range (1,17):
+        dic_resp2["resposta"+str(i)] = request.form.get('p0'+str(i))
+
  
-@app.route('/usuarios', methods=['GET'])
-def get_usuarios():
-    mycursor = mydb.cursor()
-    mycursor.execute('SELECT * FROM Usuario')
+    #testando as veriaveis
+    print("Nome:", nome, "\nData:", data, "\n1.",  resp01, "\n2.",  resp02, "\n3.",  resp03, "\n4.",  resp04, "\n5.",  resp05, "\n6.",  resp06, "\n7.",  resp07, "\n8.",  resp08, "\n9.",  resp09, "\n10.",  resp10, "\n11.",  resp11, "\n12.",  resp12, "\n13.",  resp13, "\n14.",  resp14, "\n15.",  resp15, "\n16.",  resp16, "\n17.",  resp17)
+    print("data : ",type(data))
+    print("TIpo4 : ",type(resp04))
+    print("TIpo7 : ",type(resp07))
+    #print("tipos")
+    #print("nome: ", type(nome), " senha: ", type(senha), "resp01: ",  type(resp01), "resp02: ",  type(resp02) )
 
-    usuarios_nao_tratado = mycursor.fetchall()
+    #testando funções
+    Teste(int(resp04), 0 ,0) 
 
-    usuarios = list()
-    for usuario in usuarios_nao_tratado:
-        usuarios.append(
-            {
-            'id': usuario[0],
-            'nome': usuario[1],
-            'idade': usuario[2]
-            }
-        )
+    print(dic_resp2)
+    print("---", type(dic_resp2))
+    print("resposta pergunta 1: " , dic_resp2['resposta1'])
+    return redirect('/')#retorna acesso
+    #return render_template()#retorna acesso
 
-    return make_response(
-        jsonify(
-            message = 'Lista de Usuários: ',
-            data = usuarios
-        )
-    )
-
-
-@app.route('/usuarios', methods=['POST'])
-def insert_usuario():
-
-    usuario = request.json
-
-    mycursor = mydb.cursor()
-    sql = f"INSERT INTO Usuario (nome, idade) VALUES('{usuario['nome']}','{usuario['idade']}')"
-    mycursor.execute(sql)
-    mydb.commit()
-
-    return make_response(
-        jsonify(
-            message = 'Usuário cadastrado com sucesso.',
-            usuario = usuario
-        )
-    )
-
-
-app.run()
+if __name__ in "__main__":
+    #app.run(debug=True,port=6543)
+    app.run(debug=True,port=6543)

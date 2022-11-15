@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta namr="viewpoint" content="width-device-width, initial-scale=1.0">
+    <title> HOME </title>
+    <link rel="stylesheet" href="/static/css/home.css">
+
+</head>
+
+<body>
+    <div id= "form_fundo">
+        <h1>FORMULARIO</h1>
+        <h1>E-Cológicos</h1>
+
+        <div id="form_frenter">
+
+            <form action="/formulario" id="formulario" method="post">
+                <div>
+                    <label for="nome"> Nome </label>
+                    <input type="text" name="nome" id="nome" required placeholder="Digite seu nome"> <br>
+                </div>
+                
+                <div>
+                    <label for="data: ">Data da coleta dos dados:</label>
+                    <input type="date" name="data" id="data" required >
+                </div>
+
+                <!---
+                Perguntas fase CARBONO
+                -->
+                <div id = "carbono">
+                    <div>
+                        <p>1. Realiza separação do lixo entre orgânico e reciclável?</p>
+                        <label for="Sim01"><input name = "p01" id="Sim01" value = "Sim" type = "radio" required >Sim </label>
+                        <label for="Nao01"><input name = "p01" id="Nao01" value = "Nao" type = "radio" required >Não</label>
+                    </div>
+
+                    <div>
+                        <p>2. Faz reciclagem?</p>
+                        <label for="Sim02"><input name = "p02" id="Sim02" value = "Sim" type = "radio" required >Sim</label>
+                        <label for="Nao02"><input name = "p02" id="Nao02" value = "Nao" type = "radio" required >Não</label>
+                    </div>
+
+
+
+
+
+                    <div>
+                        <p>3. Separa o lixo por tipo? (Papel, vidro, metal, etc) </p>
+                        <label for="Sim03"><input name = "p03" id="Sim03" value = "Sim" type = "radio" required >Sim</label>
+                        <label for="Nao03"><input name = "p03" id="Nao03" value = "Nao" type = "radio" required >Não</label>
+                    </div>
+
+                    <div>
+                        <br>
+                        <label for="p04">4. Quantos minutos por dia você usa transporte público?:</label>
+                        <input type="number"  name="p04" id="quantity" required placeholder="Digite em litros" >
+                        
+                    </div>
+
+                        <!---
+                    <div>
+                        <p>4. Quantos minutos por dia você usa transporte público?</p>
+                        <select required = "required" name="p04">
+                            <option selected="selected" value = ""> Selecione</option>
+                            <option value = 00>5 minutos</option>
+                            <option value = 01>10 minutos</option>
+                            <option value = 02>15 minutos</option>
+                            <option value = 03>20 minutos</option>
+                            <option value = 04>25 minutos</option>
+                            <option value = 05>30 minutos</option>
+                            <option value = 06>35 minutos</option>
+                            <option value = 07>40 minutos</option>
+                            <option value = 08>45 minutos</option>
+                            <option value = 09>Mais de 45 minutos</option>
+                        </select>
+                    </div>
+                    -->
+                    
+                    <div>
+                        <p>5. Você tem um carro?</p>
+                        <label for="">Selecione o tipo</label>
+                        <select required = "required" name="p05">
+                            <option selected="selected" value = ""> Selecione</option>
+                            <option value = 00>Nenhum</option>
+                            <option value = 01>Diesel</option>
+                            <option value = 02>Gasolina</option>
+                            <option value = 03>Etanol ou gás</option>
+                            <option value = 04>Híbrido</option>
+                            <option value = 05>Híbrido elétrico</option>
+                            <option value = 06>Elétrico</option>
+                            <option value = 07>Não sei </option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <br>
+                        <label for="p06">6. Realiza alguma coleta de água de chuva? Se sim, quantos litros?</label>
+                        <label for="p06"><input name = "p06" id="Nao06" value = "Nao" type = "radio">Não Realizo coleta</label>
+                        <input type="number"  name="p06" id="quantity06" required placeholder="Digite em litros" >
+                        <!-- 
+                        <label for="Sim06"><input name = "p06" id="Sim06" value = "Sim" type = "radio">Sim</label>
+                        <label for="Nao06"><input name = "p06" id="Nao06" value = "Nao" type = "radio">Não</label>
+                        -->
+                    </div>
+
+                    <div>
+                        <p>7. Realiza algum tipo de reaproveitamento da água?</p>
+                        <label for="Sim07"><input name = "p07" id="Sim07" value = "Sim" type = "radio" required  >Sim</label>
+                        <label for="Nao07"><input name = "p07" id="Nao07" value = "Nao" type = "radio" required >Não</label>
+                    </div>
+
+                    <div>
+                        <br>
+                        <label for="p08">8. Qual o consumo médio de água em um dia? (litros)</label>
+                        <input type="number"  name="p08" id="quantity08" required placeholder="Digite em litros" >
+                    </div>
+
+                    <div>
+                        <br>
+                        <label for="p09">9. Toma quantos banhos por dia?</label>
+                        <input type="number"  name="p09" id="quantity09" required placeholder="Digite um número" >
+                    </div>
+
+                    <div>
+                        <br>
+                        <label for="p10">10. Qual a duração do banho?</label>
+                        <input type="number"  name="p10" id="quantity10" required placeholder="Digite os minutos" >
+                        
+                    </div>
+
+                    <div>
+                        <br>
+                        <label for="p11">11. Quantas vezes por dia você escova os dentes, faz a barba ou lava as mãos?</label>
+                        <input type="number"  name="p11" id="quantity11" required placeholder="Digite um número" >
+                    </div>
+
+                    <div>
+                        <p>12. Você deixa a torneira aberta durante o processo acima?</p>
+                        <label for="Sim12"><input name = "p12" id="Sim12" value = "Sim" type = "radio" required>Sim</label>
+                        <label for="Nao12"><input name = "p12" id="Nao12" value = "Nao" type = "radio" required>Não</label>
+                    </div>
+
+                    <div>
+                        <br>    
+                        <label for="p13">13. Quantas cargas de roupa você lava em média por semana?</label>
+                        <input type="number"  name="p13" id="quantity13" required placeholder="Digite um número" >
+
+                    </div>
+
+
+                    <div>
+                        <br>
+                        <label for="p14">14. Qual o consumo de energia em KW/h?</label>
+                        <input type="number"  name="p14" id="quantity14" required placeholder="Digite um número" > 
+                    </div>
+
+                    <div>
+                        <br>
+                        <p>15. Qual sua alimentação?</p>
+                        <label for="">Selecione o tipo</label>
+                        <select required = "required" name="p15">
+                            <option selected="selected" value = ""> Selecione</option>
+                            <option value = 00>Como de tudo</option>
+                            <option value = 01>Um dia sem carne na semana</option>
+                            <option value = 02>Tento não comer carne vermelha</option>
+                            <option value = 03>Não como carne vermelha</option>
+                            <option value = 04>Só como peixe de carne</option>
+                            <option value = 05>Vegetariano</option>
+                            <option value = 06>Vegano</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <br>
+                        <p>16. A casa usa energia renovável?</p>
+                        <label for="">Selecione a resposta</label>
+                        <select required = "required" name="p16">
+                            <option selected="selected" value = ""> Selecione</option>
+                            <option value = 00>Sim</option>
+                            <option value = 01>Sim, produção própria</option>
+                            <option value = 02>Não</option>
+                            <option value = 03>Não sei</option>
+                        </select>
+
+                    </div>
+
+                    <div>
+                        <p>17. Consome produtos de uma empresa EcoFriendly </p>
+                        <label for="Sim17"><input name = "p17" id="Sim17" value = "Sim" type = "radio" required >Sim</label>
+                        <label for="Nao17"><input name = "p17" id="Nao17" value = "Nao" type = "radio" required >Não</label>
+                    </div>
+
+                    
+
+                </div>
+                    <br>
+                    <!---button type="reset" id="reset">Resetar</button> -->
+                    <button type="submit" id="enviar">Enviar</button>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>   
+                
+        
+
+        </div>
+    </div>
+    </form>
+
+
+</body>
+
+</html>
