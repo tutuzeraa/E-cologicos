@@ -102,7 +102,7 @@ def p17(resposta):  #17. Consome produtos de uma empresa EcoFriendly ?
 '''
 def calculo(dic):
     pontuacao = 0
-    j = 0
+    j = 1
     for i in dic:    
         if j <= 9: pontuacao += globals()["p0%d"% j](dic[i])
         else: pontuacao += globals()["p%d"% j](dic[i])
