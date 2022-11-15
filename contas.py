@@ -36,13 +36,14 @@ def p05(resposta):  #5. Você tem um carro?
         elif resposta == "07": #Não sei
             return 1.71
 
-def p06(resposta):  #6. Realiza alguma coleta de água de chuva? Se sim, quantos litros?
-        if resposta == "Sim": return 0
-        else: return 0.2
+def p06(resposta):  #6. Realiza alguma coleta de água de chuva? Se sim, quantos litros? 
+        print(resposta)
+        if resposta == "Não": return 0.2
+        else: return 0
 
 def p07(resposta):  #7. Realiza algum tipo de reaproveitamento da água? 
-        if resposta == "Sim": return 0
-        else: return 0.2
+        if resposta == "Não": return 0.2
+        else: return 0
 
 def p08(resposta):  #8. Qual o consumo médio de água em um dia? (litros)
     return int(resposta)*0.02
