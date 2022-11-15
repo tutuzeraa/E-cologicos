@@ -5,11 +5,11 @@ from flask import Flask, make_response, jsonify, request, render_template, redir
 
 dic_resp2 = {}
 
-mydb = mysql.connector.connect( 
+mydb = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='',
-    database='e-cologicos'
+    password='123',
+    database=''
 )
 
 app = Flask('e-cologicos')
@@ -23,12 +23,7 @@ def home():
 @app.route('/formulario', methods = ['GET' , 'POST'])
 def formulario():  #criar a f com o mesmo nome da rota ajuda
     nome = request.form.get('nome')
-    idade = request.form.get('idade') # perguntar idade do user
     data = request.form.get('data')
-    
-    mycursor = mydb.cursor()
-    mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, 7])
-    mydb.commit()
 
     for i in range (1,17):
         if i <= 9:
@@ -37,7 +32,7 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
             dic_resp2["resposta"+str(i)] = request.form.get('p'+str(i))
 
 
-    print("SOMA INDICE: " , 1) # consertar função calculo, ta dando erro 
+    print("SOMA INDICE: " , calculo(dic_resp2))  
 
     return redirect('/')#retorna acesso
 
@@ -66,6 +61,46 @@ def get_usuarios():
     )
 
 
+@app.route('/usuarios', methods=['POST'])
+def insert_usuario():
 
+    usuario = request.json
+
+    mycursor = mydb.cursor()
+    sql = f"INSERT INTO Usuario (nome, idade) VALUES('{usuario['nome']}','{usuario['idade']}')"
+    mycursor.execute(sql)
+    mydb.commit()
+
+    return make_response(
+        jsonify(
+            message = 'Usuário cadastrado com sucesso.',
+            usuario = usuario
+        )
+    )
+
+@app.route('/historico', methods=['GET'])
+def get_historico():
+    id_usuario = request.args.get('id')
+    mycursor = mydb.cursor()
+    mycursor.execute('SELECT * FROM Historico WHERE idUsuario=%s', id_usuario)
+
+    raw_historico = mycursor.fetchall()
+
+    historico = list()
+    for h in raw_historico:
+        historico.append(
+            {
+            'pontuacaoGeral': h[1],
+            'dataColeta': h[2],
+            'idUsuario': h[3]
+            }
+        )
+
+    return make_response(
+        jsonify(
+            message = 'Histórico do usuário: ',
+            data = historico
+        )
+    )
 
 app.run()
