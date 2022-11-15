@@ -1,4 +1,6 @@
 import math
+from datetime import date
+from datetime import datetime
 
 def p01(resposta):  #1. Realiza separação do lixo entre orgânico e reciclável?
     if resposta == "Sim": return 0.21
@@ -107,7 +109,11 @@ def calculo(dic):
         if j <= 9: pontuacao += globals()["p0%d"% j](dic[i])
         else: pontuacao += globals()["p%d"% j](dic[i])
         j += 1
-
-
     return pontuacao
-    
+
+'''
+//Esta função calcula a idade
+'''
+def idade(data):
+    hoje = date.today()
+    return int(hoje.year) - data.year - ((hoje.month, hoje.day) <  (data.month, data.day)) 
