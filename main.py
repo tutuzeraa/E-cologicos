@@ -20,7 +20,7 @@ def home():
     return render_template('formulario.html') #pagina inicial
 
 
-@app.route('/formulario', methods = ['GET' , 'POST'])
+@app.route('/formulario', methods = ['POST'])
 def formulario():  #criar a f com o mesmo nome da rota ajuda
     # insere na tabela Usuario
     nome = request.form.get('nome')
@@ -50,6 +50,34 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
         idUsuario = id
     mycursor.execute('INSERT INTO Historico (pontuacaoGeral, dataColeta, idUsuario) VALUES (%s, %s, %s)', [pontuacaoGeral, dataColeta, idUsuario])
     mydb.commit()
+
+    # mycursor.execute('SELECT idHistorico FROM Historico ORDER BY idHistorico DESC LIMIT 1')
+    # idHistorico = mycursor.fetchall()[0][0]
+
+    # # insere na tabela Agua
+    # campos = [idHistorico, pontuacaoGeral].extend([dic_resp2[i] for i in ['p08','p06', 'p07']])
+    # mycursor.execute('INSERT INTO Agua (idHistorico, valorIndice, consumoDeAgua, coletaAguaDaChuva, fazReusoDeAgua) VALUES (%s,%s,%s,%s,%s)', campos)
+    # mydb.commit()
+
+    # # insere na tabela Alimentacao
+    # campos = [idHistorico, pontuacaoGeral].extend([dic_resp2[i] for i in []])
+    # mycursor.execute('INSERT INTO Agua (idHistorico, valorIndice, consumoDeAgua, coletaAguaDaChuva, fazReusoDeAgua) VALUES (%s,%s,%s,%s,%s)', campos)
+    # mydb.commit()
+
+    # # insere na tabela Energia
+    # campos = [idHistorico, pontuacaoGeral].extend([dic_resp2[i] for i in []])
+    # mycursor.execute('INSERT INTO Agua (idHistorico, valorIndice, consumoDeAgua, coletaAguaDaChuva, fazReusoDeAgua) VALUES (%s,%s,%s,%s,%s)', campos)
+    # mydb.commit()
+
+    # # insere na tabela Reciclagem
+    # campos = [idHistorico, pontuacaoGeral].extend([dic_resp2[i] for i in []])
+    # mycursor.execute('INSERT INTO Agua (idHistorico, valorIndice, consumoDeAgua, coletaAguaDaChuva, fazReusoDeAgua) VALUES (%s,%s,%s,%s,%s)', campos)
+    # mydb.commit()
+
+    # # insere na tabela Transporte
+    # campos = [idHistorico, pontuacaoGeral].extend([dic_resp2[i] for i in []])
+    # mycursor.execute('INSERT INTO Agua (idHistorico, valorIndice, consumoDeAgua, coletaAguaDaChuva, fazReusoDeAgua) VALUES (%s,%s,%s,%s,%s)', campos)
+    # mydb.commit()
 
     return redirect('/')#retorna acesso
 
