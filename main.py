@@ -69,7 +69,7 @@ def get_usuarios():
 def get_historico():
     id_usuario = request.args.get('id')
     mycursor = mydb.cursor()
-    mycursor.execute('SELECT * FROM Historico WHERE idUsuario=%s', id_usuario)
+    mycursor.execute('SELECT * FROM Historico WHERE idUsuario=%s', [id_usuario])
 
     raw_historico = mycursor.fetchall()
 
@@ -90,4 +90,4 @@ def get_historico():
         )
     )
 
-app.run()
+app.run(debug=True)
