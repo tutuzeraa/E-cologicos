@@ -26,6 +26,7 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
     nome = request.form.get('nome')
     data_nasc = request.form.get('data_nasc')
     idade = calculaIdade(datetime.strptime(data_nasc, '%Y-%m-%d').date())
+    id = request.form.get('id')
     
     mycursor = mydb.cursor()
     mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, idade])
