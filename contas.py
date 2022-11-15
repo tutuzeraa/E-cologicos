@@ -2,7 +2,7 @@ import math
 
 def p01(resposta):
     if resposta == "Sim": return 0.21
-    else: return 0
+    else: return 0.41
 
 def p02(resposta): # 2. Faz reciclagem?
     if resposta == "Sim": return 0
@@ -40,7 +40,7 @@ def p06(resposta):
 
 def p07(resposta):   #7. Realiza algum tipo de reaproveitamento da água? 
         if resposta == "Sim": return 0
-        else: return 0.3
+        else: return 0.2
 
 def p08(resposta): #8. Qual o consumo médio de água em um dia? (litros)
     return int(resposta)*0.02
@@ -142,6 +142,3 @@ def calculo(dic):
 
     return pontuacao
     
-
-def teste():
-    print('chamou')
