@@ -23,11 +23,12 @@ def home():
 @app.route('/formulario', methods = ['GET' , 'POST'])
 def formulario():  #criar a f com o mesmo nome da rota ajuda
     nome = request.form.get('nome')
-    idade = request.form.get('idade') # perguntar idade do user
     data = request.form.get('data')
+    data_nasc = request.form.get('data_nasc')
+    idade = calculaIdade(datetime.strptime(data_nasc, '%Y-%m-%d').date())
     
     mycursor = mydb.cursor()
-    mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, 7])
+    mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, idade])
     mydb.commit()
 
     for i in range (1,17):

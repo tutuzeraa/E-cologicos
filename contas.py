@@ -1,4 +1,6 @@
 import math
+from datetime import date
+from datetime import datetime
 
 def p01(resposta):  #1. Realiza separação do lixo entre orgânico e reciclável?
     if resposta == "Sim": return 0.21
@@ -34,13 +36,14 @@ def p05(resposta):  #5. Você tem um carro?
         elif resposta == "07": #Não sei
             return 1.71
 
-def p06(resposta):  #6. Realiza alguma coleta de água de chuva? Se sim, quantos litros?
-        if resposta == "Sim": return 0
-        else: return 0.2
+def p06(resposta):  #6. Realiza alguma coleta de água de chuva? Se sim, quantos litros? 
+        print(resposta)
+        if resposta == "Não": return 0.2
+        else: return 0
 
 def p07(resposta):  #7. Realiza algum tipo de reaproveitamento da água? 
-        if resposta == "Sim": return 0
-        else: return 0.2
+        if resposta == "Não": return 0.2
+        else: return 0
 
 def p08(resposta):  #8. Qual o consumo médio de água em um dia? (litros)
     return int(resposta)*0.02
@@ -97,17 +100,21 @@ def p17(resposta):  #17. Consome produtos de uma empresa EcoFriendly ?
     else: return 0.31
 
 '''
-//Esta função gerencia as perguntas para outras funcões calcularem os indices
+//Esta função gerencia as perguntas para outras funcões calcularesm os indices
 //Retonar a soma (pontuação)
 '''
 def calculo(dic):
     pontuacao = 0
-    j = 0
+    j = 1
     for i in dic:    
         if j <= 9: pontuacao += globals()["p0%d"% j](dic[i])
         else: pontuacao += globals()["p%d"% j](dic[i])
         j += 1
-
-
     return pontuacao
-    
+
+'''
+//Esta função calcula a idade
+'''
+def calculaIdade(data):
+    hoje = date.today()
+    return int(hoje.year) - data.year - ((hoje.month, hoje.day) <  (data.month, data.day)) 
