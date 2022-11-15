@@ -1,22 +1,22 @@
 import math
 
-def p01(resposta):
+def p01(resposta):  #1. Realiza separação do lixo entre orgânico e reciclável?
     if resposta == "Sim": return 0.21
     else: return 0.41
 
-def p02(resposta): # 2. Faz reciclagem?
+def p02(resposta):  #2. Faz reciclagem?
     if resposta == "Sim": return 0
     else: return 0.3
     
-def p03(resposta): #3. Separa o lixo por tipo? (Papel, vidro, metal, etc) 
+def p03(resposta):  #3. Separa o lixo por tipo? (Papel, vidro, metal, etc) 
     if resposta == "Sim": return 0
     else: return 0.3
 
-def p04(resposta): 
+def p04(resposta):  #4. Quantos minutos por dia você usa transporte público?
     return math.floor((int(resposta))/ 5)*0.03
 
 
-def p05(resposta): 
+def p05(resposta):  #5. Você tem um carro?
         if resposta == "00":  #Nenhum
             return 0
         elif resposta == "01":
@@ -34,22 +34,22 @@ def p05(resposta):
         elif resposta == "07": #Não sei
             return 1.71
 
-def p06(resposta): 
+def p06(resposta):  #6. Realiza alguma coleta de água de chuva? Se sim, quantos litros?
         if resposta == "Sim": return 0
         else: return 0.2
 
-def p07(resposta):   #7. Realiza algum tipo de reaproveitamento da água? 
+def p07(resposta):  #7. Realiza algum tipo de reaproveitamento da água? 
         if resposta == "Sim": return 0
         else: return 0.2
 
-def p08(resposta): #8. Qual o consumo médio de água em um dia? (litros)
+def p08(resposta):  #8. Qual o consumo médio de água em um dia? (litros)
     return int(resposta)*0.02
 
 def p09(resposta):  #9. Toma quantos banhos por dia?
     quantidade = int(resposta)
     return quantidade*0.12
 
-def p10(resposta): #10. Qual a duração do banho?
+def p10(resposta):  #10. Qual a duração do banho?
     return math.floor((int(resposta)/5))*0.3
 
 def p11(resposta):  #11. Quantas vezes por dia você escova os dentes, faz a barba ou lava as mãos?
@@ -59,10 +59,10 @@ def p12(resposta):  #12. Você deixa a torneira aberta durante o processo acima?
         if resposta == "Sim": return 0.03
         else: return 0
 
-def p13(resposta): #Quantas cargas de roupa você lava em média por semana?
+def p13(resposta):  #13. Quantas cargas de roupa você lava em média por semana?
     return int(resposta)*0.7
 
-def p14(resposta):  #Qual o consumo de energia em KW/h?
+def p14(resposta):  #14. Qual o consumo de energia em KW/h?
     return math.floor((int(resposta)/50))
 
 def p15(resposta):  #15. Qual sua alimentação? 
@@ -81,7 +81,7 @@ def p15(resposta):  #15. Qual sua alimentação?
     elif resposta == "06": #Vegano
         return 0.38
 
-def p16(resposta):  #A casa usa energia renovável?
+def p16(resposta):  #16. A casa usa energia renovável?
     if resposta == "00":  #sim
         return 0
     elif resposta == "01": #Sim, produção própria
@@ -92,7 +92,7 @@ def p16(resposta):  #A casa usa energia renovável?
         return 0;13
 
 
-def p17(resposta):  #17.    Consome produtos de uma empresa EcoFriendly ? 
+def p17(resposta):  #17. Consome produtos de uma empresa EcoFriendly ? 
     if resposta == "Sim": return 0
     else: return 0.31
 
