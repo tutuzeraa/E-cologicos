@@ -29,8 +29,9 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
     id = request.form.get('id')
     
     mycursor = mydb.cursor()
-    mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, idade])
-    mydb.commit()
+    if id == "":
+        mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, idade])
+        mydb.commit()
 
     # preenche respostas no dicionario
     for i in range (1,17):
@@ -42,12 +43,13 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
     # insere na tabela Historico
     pontuacaoGeral = calculo(dic_resp2)
     dataColeta = request.form.get('data')
-    mycursor.execute('SELECT id FROM Usuario ORDER BY id DESC LIMIT 1')
-    idUsuario = mycursor.fetchall()[0][0]
+    if id == "":
+        mycursor.execute('SELECT id FROM Usuario ORDER BY id DESC LIMIT 1')
+        idUsuario = mycursor.fetchall()[0][0]
+    else:
+        idUsuario = id
     mycursor.execute('INSERT INTO Historico (pontuacaoGeral, dataColeta, idUsuario) VALUES (%s, %s, %s)', [pontuacaoGeral, dataColeta, idUsuario])
     mydb.commit()
-
-    #print("SOMA INDICE: " , 1) # consertar função calculo, ta dando erro 
 
     return redirect('/')#retorna acesso
 
