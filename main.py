@@ -65,7 +65,29 @@ def get_usuarios():
         )
     )
 
+@app.route('/historico', methods=['GET'])
+def get_historico():
+    id_usuario = request.args.get('id')
+    mycursor = mydb.cursor()
+    mycursor.execute('SELECT * FROM Historico WHERE idUsuario=%s', id_usuario)
 
+    raw_historico = mycursor.fetchall()
 
+    historico = list()
+    for h in raw_historico:
+        historico.append(
+            {
+            'pontuacaoGeral': h[1],
+            'dataColeta': h[2],
+            'idUsuario': h[3]
+            }
+        )
+
+    return make_response(
+        jsonify(
+            message = 'Histórico do usuário: ',
+            data = historico
+        )
+    )
 
 app.run()
