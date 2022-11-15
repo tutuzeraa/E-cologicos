@@ -9,8 +9,7 @@ def Teste(x, y, z):
 
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'TESTE'  #n lembro o que era
-
+app.config['SECRET_KEY'] = 'TESTE'  
 
 @app.route('/')  #quando entra sem rota 
 def home():
@@ -22,6 +21,7 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
     nome = request.form.get('nome')
     data = request.form.get('data')
 
+      #pegando as resp um por um
     resp01 = request.form.get('p01')
     resp02 = request.form.get('p02')
     resp03 = request.form.get('p03')
