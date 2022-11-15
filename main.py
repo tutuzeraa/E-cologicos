@@ -23,7 +23,12 @@ def home():
 @app.route('/formulario', methods = ['GET' , 'POST'])
 def formulario():  #criar a f com o mesmo nome da rota ajuda
     nome = request.form.get('nome')
+    idade = request.form.get('idade') # perguntar idade do user
     data = request.form.get('data')
+    
+    mycursor = mydb.cursor()
+    mycursor.execute('INSERT INTO Usuario (nome, idade) VALUES (%s, %s)', [nome, 7])
+    mydb.commit()
 
     for i in range (1,17):
         if i <= 9:
@@ -32,7 +37,7 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
             dic_resp2["resposta"+str(i)] = request.form.get('p'+str(i))
 
 
-    print("SOMA INDICE: " , calculo(dic_resp2))  
+    print("SOMA INDICE: " , 1) # consertar função calculo, ta dando erro 
 
     return redirect('/')#retorna acesso
 
@@ -61,22 +66,6 @@ def get_usuarios():
     )
 
 
-@app.route('/usuarios', methods=['POST'])
-def insert_usuario():
-
-    usuario = request.json
-
-    mycursor = mydb.cursor()
-    sql = f"INSERT INTO Usuario (nome, idade) VALUES('{usuario['nome']}','{usuario['idade']}')"
-    mycursor.execute(sql)
-    mydb.commit()
-
-    return make_response(
-        jsonify(
-            message = 'Usuário cadastrado com sucesso.',
-            usuario = usuario
-        )
-    )
 
 
 app.run()

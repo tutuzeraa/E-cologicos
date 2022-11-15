@@ -97,7 +97,7 @@ def p17(resposta):  #17. Consome produtos de uma empresa EcoFriendly ?
     else: return 0.31
 
 '''
-//Esta função gerencia as perguntas para outras funcões calcularesm os indices
+//Esta função gerencia as perguntas para outras funcões calcularem os indices
 //Retonar a soma (pontuação)
 '''
 def calculo(dic):
