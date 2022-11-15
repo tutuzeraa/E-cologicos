@@ -37,7 +37,6 @@ def p05(resposta):  #5. Você tem um carro?
             return 1.71
 
 def p06(resposta):  #6. Realiza alguma coleta de água de chuva? Se sim, quantos litros? 
-        print(resposta)
         if resposta == "Não": return 0.2
         else: return 0
 
@@ -59,8 +58,8 @@ def p11(resposta):  #11. Quantas vezes por dia você escova os dentes, faz a bar
     return int(resposta)*0.05
 
 def p12(resposta):  #12. Você deixa a torneira aberta durante o processo acima?
-        if resposta == "Sim": return 0.03
-        else: return 0
+    if resposta == "Sim": return 0.03
+    else: return 0
 
 def p13(resposta):  #13. Quantas cargas de roupa você lava em média por semana?
     return int(resposta)*0.7
@@ -115,6 +114,6 @@ def calculo(dic):
 '''
 //Esta função calcula a idade
 '''
-def idade(data):
+def cal_idade(data):
     hoje = date.today()
-    return int(hoje.year) - data.year - ((hoje.month, hoje.day) <  (data.month, data.day)) 
+    return hoje.year - data.year - ((hoje.month, hoje.day) <  (data.month, data.day)) 
