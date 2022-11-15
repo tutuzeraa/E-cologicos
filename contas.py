@@ -13,7 +13,7 @@ def p03(resposta): #3. Separa o lixo por tipo? (Papel, vidro, metal, etc)
     else: return 0.3
 
 def p04(resposta): 
-    return math.floor((int(resposta)/ 5)*0.03)
+    return math.floor((int(resposta))/ 5)*0.03
 
 
 def p05(resposta): 
@@ -50,7 +50,7 @@ def p09(resposta):  #9. Toma quantos banhos por dia?
     return quantidade*0.12
 
 def p10(resposta): #10. Qual a duração do banho?
-    return math.floor((int(resposta)/5) *0.3)
+    return math.floor((int(resposta)/5))*0.3
 
 def p11(resposta):  #11. Quantas vezes por dia você escova os dentes, faz a barba ou lava as mãos?
     return int(resposta)*0.05
@@ -102,43 +102,12 @@ def p17(resposta):  #17.    Consome produtos de uma empresa EcoFriendly ?
 '''
 def calculo(dic):
     pontuacao = 0
+    j = 0
+    for i in dic:    
+        if j <= 9: pontuacao += globals()["p0%d"% j](dic[i])
+        else: pontuacao += globals()["p%d"% j](dic[i])
+        j += 1
 
-    for i in dic:
-        #print("[",i,"]: ", dic[i])
-        if(i == 'resposta1'):
-            pontuacao += p01(dic[i])
-        if(i == 'resposta2'):
-            pontuacao += p02(dic[i])
-        if(i == 'resposta3'):
-            pontuacao += p03(dic[i])
-        if(i == 'resposta4'):
-            pontuacao += p04(dic[i])
-        if(i == 'resposta5'):
-            pontuacao += p05(dic[i])
-        if(i == 'resposta6'):
-            pontuacao += p06(dic[i])
-        if(i == 'resposta7'):
-            pontuacao += p07(dic[i])
-        if(i == 'resposta8'):
-            pontuacao += p08(dic[i])
-        if(i == 'resposta9'):
-            pontuacao += p09(dic[i])
-        if(i == 'resposta10'):
-            pontuacao += p10(dic[i])
-        if(i == 'resposta11'):
-            pontuacao += p11(dic[i])
-        if(i == 'resposta12'):
-            pontuacao += p12(dic[i])
-        if(i == 'resposta13'):
-            pontuacao += p13(dic[i])
-        if(i == 'resposta14'):
-            pontuacao += p14(dic[i])
-        if(i == 'resposta15'):
-            pontuacao += p15(dic[i])
-        if(i == 'resposta16'):
-            pontuacao += p16(dic[i])
-        if(i == 'resposta17'):
-            pontuacao += p17(dic[i])
 
     return pontuacao
     
