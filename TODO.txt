@@ -1,5 +1,0 @@
-1) ler do usuário suas respostas
-2) calcular o indice do usuário
-    \- por no banco de dados
-3) mostrar a nota
-4) mostrar seu histórico
