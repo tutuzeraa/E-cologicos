@@ -51,7 +51,8 @@ def formulario():  #criar a f com o mesmo nome da rota ajuda
     mycursor.execute('INSERT INTO Historico (pontuacaoGeral, dataColeta, idUsuario) VALUES (%s, %s, %s)', [pontuacaoGeral, dataColeta, idUsuario])
     mydb.commit()
 
-    return redirect('/')#retorna acesso
+    #return redirect('/')#retorna acesso
+    return render_template('historico.html',  nome = nome, id = idUsuario , pontuacaoGeral=round(pontuacaoGeral,2)  )
 
 @app.route('/usuarios', methods=['GET'])
 def get_usuarios():
